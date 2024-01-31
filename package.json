@@ -1,0 +1,17 @@
+{
+  "name": "vite-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --kill-others \"npm run --prefix ./APIFetch dev\" \"npm run --prefix ./frontend dev\"",
+    "build": "npm run --prefix ./APIFetch build & npm run --prefix ./frontend build"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

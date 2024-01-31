@@ -1,0 +1,50 @@
+/* search bar */
+.search {
+    margin-bottom: 64px;
+  }
+  
+  .search .nav-item {
+    padding: 16px 24px;
+    text-transform: capitalize;
+    border-radius: 12px;
+  }
+  
+  .search .tabs {
+    margin-bottom: 8px;
+  }
+  
+  .search .fields {
+    border: 1px solid gray;
+    border-radius: 14px;
+    color: #555563;
+    padding: 8px 0px;
+    background-color: white;
+  }
+  
+  .search .fields > div {
+    display: inline-flex;
+  }
+  
+  .search .fields input {
+    border: none;
+    padding: 8px 24px;
+    font-size: 14px;
+  }
+  
+  .search .fields input:focus {
+    box-shadow: none !important;
+  }
+  
+  .search .fields input::placeholder {
+    text-transform: capitalize;
+  }
+  
+  .search .fields button {
+    height: 48px;
+    text-transform: capitalize;
+    font-size: 14px;
+  }
+  
+  .search .magnifying-glass {
+    margin-right: 8px;
+  }

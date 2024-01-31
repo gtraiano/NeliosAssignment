@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import 'search.css';
+@import 'items-grid.css';
+@import 'control-panel.css';
+
+body {
+  font-family: "Roboto Flex", sans-serif;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  background: lightblue;
+ }
+
+.title-text {
+  margin-bottom: 64px;
+}
+
+.title-text h1 {
+  color: #555563;
+  font-size: 76px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 76px;
+  word-wrap: break-word;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  font-variation-settings: 'wdth' 40, 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+  font-optical-sizing: 144px;
+  font-style: normal;
+  font-stretch: 40;
+}
+
+.text-14 {
+  color: #838393;
+  font-size: 14px;
+  font-weight: 350;
+  line-height: 24px;
+  word-wrap: break-word;
+  text-transform: capitalize;
+}
+
+.text-16 {
+  font-size: 16px;
+  font-weight: 350;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  font-variation-settings: 'wdth' 108, 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 90, 'YTLC' 485, 'YTUC' 732, 'YTAS' 750, 'YTDE' -180, 'YTFI' 738;
+}
+
+
+.text-16-bold {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  font-variation-settings: 'wdth' 108, 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 90, 'YTLC' 485, 'YTUC' 732, 'YTAS' 750, 'YTDE' -180, 'YTFI' 738;
+}
+
+.breadcrumbs {
+  margin-top: 24px;
+  margin-bottom: 64px;
+}
+
+.breadcrumbs .breadcrumb {
+  --bs-breadcrumb-font-size: 16px;
+  --bs-breadcrumb-divider: '>'
+}
+
+.breadcrumb > li {
+  text-transform: capitalize;
+}
+
+#see-more-results {
+  padding-bottom: 128px;
+}
+
+#promo {
+  padding: 128px 300px;
+  margin-bottom: 128px;
+}
+
+#promo > .card {
+  aspect-ratio: calc(1320 / 428);
+}
+
+.results .results-cards {
+  position: relative;
+  /*min-height: 50vh;*/
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 24px !important;
+}
+
+.results .results-cards > .loading {
+  display: none !important;
+}
+
+.results .results-cards > .loading[active] {
+  display: inherit !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(255,255,255,0.5);
+  height: inherit;
+}
+
+@media only screen and (max-width: 1280px) {
+  .results .results-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .results .results-cards {
+    grid-template-columns: 1fr;
+  }
+}
