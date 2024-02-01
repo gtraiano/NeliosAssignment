@@ -82,10 +82,10 @@
       </div>
     </div>
     <!-- results -->
-    <section class="container-fluid col-10 col-xxl-10 col-xl-10 col-md-11 col-sm-12 d-flex flex-row results mb-4">
+    <section class="container-fluid col-12 col-xxl-10 col-xl-10 col-md-11 col-sm-12 d-flex flex-row results mb-4">
       <section class=" col-2 col-xl-2 col-lg-3 col-md-4 col-sm-4 d-flex flex-column">
         <!-- filter -->
-        <div class="container rounded-4 p-4 filter">
+        <div class="container rounded-4 p-4 px-xl-4 px-md-4 px-sm-2 filter">
           <form class="d-flex flex-column text-left ml-0" id="filter-form">
             <h4 class="mb-4">φιλτρα</h4>
             <!-- price range input -->
@@ -154,7 +154,15 @@
       <div class="container p-2 result-items">
         <!-- result items count and popular destinations -->
         <div class="row mb-3 d-flex flex-row justify-content-between align-items-center">
-          <span class="w-auto p-0 text-16"><span class="results-items-count">0</span> διαθέσιμα πακέτα διακοπών</span>
+          <span class="w-auto d-flex-inline flex-row p-0 text-16"><span class="results-items-count">0</span> διαθέσιμα πακέτα διακοπών</span>
+          <!-- button toggles filter as a modal -->
+          <!--button data-bs-toggle="modal" data-bs-target="#filter-modal" class="btn w-auto btn-outline-success d-none" id="filter-show-button"-->
+          <button class="btn w-auto btn-outline-success d-none" id="filter-show-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders2-vertical" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M0 10.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1H3V1.5a.5.5 0 0 0-1 0V10H.5a.5.5 0 0 0-.5.5M2.5 12a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5m3-6.5A.5.5 0 0 0 6 6h1.5v8.5a.5.5 0 0 0 1 0V6H10a.5.5 0 0 0 0-1H6a.5.5 0 0 0-.5.5M8 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2A.5.5 0 0 0 8 1m3 9.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1H14V1.5a.5.5 0 0 0-1 0V10h-1.5a.5.5 0 0 0-.5.5m2.5 1.5a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5"/>
+            </svg>&nbsp;
+            Φίλτρα
+          </button>
           <select class="form-select w-auto popular-destinations">
             <option selected>δημοφιλή</option>
           </select>
@@ -185,9 +193,14 @@
           &nbsp;Επικοινωνήστε μαζί μας
         </a>
       </div>
-    
     </div>
   </section>
   <!-- promo-->
+  <!--div class="modal-dialog" tabindex="-1" id="filter-modal">
+    <div class="modal-dialog .modal-dialog-centered">
+      <div class="modal-body">
+      </div>
+    </div>
+  </div-->
 </body>
 </html>

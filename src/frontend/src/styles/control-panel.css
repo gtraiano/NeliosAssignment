@@ -1,83 +1,123 @@
 .filter {
-    margin-top: 64px;
-    background-color: #FFFFFFCC;
-    color: #555563;
+  margin-top: 64px;
+  background-color: #FFFFFFCC;
+  color: #555563;
+}
+
+@media only screen and (max-width: 512px) {
+  section > *:has(.filter) {
+    display: none !important;
   }
-  
-  /*.filter * {
-    background-color: #FFFFFFCC;
-    color: #555563;
-  }*/
-  
-  
-  .filter h1, .filter h2, .filter h3, .filter h4 {
-    text-transform: uppercase;
-  }
-  
-  .filter form legend {
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 600;
-  }
-  
-  .filter label {
-    font-size: 14px;
-    text-transform: capitalize;
-  }
-  
-  .price-range input {
-    appearance: textfield;
-  }
-  
-  .price-range-rectangle-container {
-    height: 70px;
-    position: relative;
-  }
-  
-  .price-range-rectangle-container:not(:has(.price-range-rectangle:hover))::before {
-    content: 'τιμές σε προσφορά';
-    font-size: 10px;
+
+  section.show {
+    display: flex !important;
+    flex-direction: column !;
     position: absolute;
-    top: calc(50% - 10px);
-    left: calc(50% - 8ch);
+    top: 0;
+    left: 0;
+    background: whitesmoke;
   }
-  
-  .price-range-rectangle {
-    display: inline-flex;
-    flex-direction: column-reverse;
-    flex-grow: 1;
+
+  section.show * {
     align-items: center;
-    justify-content: space-evenly;
-    margin-right: 5px;
-    background: #00B9F2;
-    text-align: center;
-    position: relative;
+  }
+
+  .filter {
+    display: none;
+  }
+  section.show {
+    display: flex !important;
+    z-index: 2;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
   }
   
-  .price-range-rectangle:hover {
-    transform: scale(110%);
-    transition: transform 200ms ease-in;
-    max-height: 70px;
+  section .show * {
+    display: initial !important;
+    flex-direction: column !important;
   }
-  
-  .price-range-rectangle {
-    transform: scale(100%);
-    transition: transform 200ms ease-out;
-  }
-  
-  .price-range-rectangle:hover::before {
-    content: attr(price) '€';
-    font-size: 10px;
-  }
-  .price-range-rectangle:hover::after {
-    content: '(' attr(count) ')';
-    font-size: 10px;
-  }
-  
-  .form-check input ~ label {
-    margin-inline-start: 10px;
-  }
-  
-  .filter :checked + label {
-    font-weight: 600;
-  } 
+}
+
+
+/*.filter * {
+  background-color: #FFFFFFCC;
+  color: #555563;
+}*/
+
+
+.filter h1, .filter h2, .filter h3, .filter h4 {
+  text-transform: uppercase;
+}
+
+.filter form legend {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.filter label {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.price-range input {
+  appearance: textfield;
+}
+
+.price-range-rectangle-container {
+  height: 70px;
+  position: relative;
+}
+
+.price-range-rectangle-container:not(:has(.price-range-rectangle:hover))::before {
+  content: 'πακέτα ανά τιμή';
+  font-size: 10px;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: calc(50% - 8ch);
+  z-index: 1;
+}
+
+.price-range-rectangle {
+  display: inline-flex;
+  flex-direction: column-reverse;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 5px;
+  background: #00B9F2;
+  text-align: center;
+  position: relative;
+}
+
+.price-range-rectangle:hover {
+  transform: scale(110%);
+  transition: transform 200ms ease-in;
+  max-height: 70px;
+}
+
+.price-range-rectangle {
+  transform: scale(100%);
+  transition: transform 200ms ease-out;
+}
+
+.price-range-rectangle:hover::before {
+  content: attr(price) '€';
+  font-size: 10px;
+}
+.price-range-rectangle:hover::after {
+  content: '(' attr(count) ')';
+  font-size: 10px;
+}
+
+.form-check input ~ label {
+  margin-inline-start: 10px;
+}
+
+.filter :checked + label {
+  font-weight: 600;
+} 

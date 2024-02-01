@@ -65,5 +65,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     // initialise price range radio
     document.querySelector('.price-range-radio')?.append(...generatePriceRangeRadio(minPrice, maxPrice));
     document.querySelector(`.price-range-radio input[value="${maxPrice}"]`)?.setAttribute('checked', '');
-    
 });
