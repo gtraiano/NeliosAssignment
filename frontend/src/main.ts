@@ -4,8 +4,8 @@ import { generateHotelCard, generateMealPlanRadio, generatePriceRangeRadio, meal
 import { filters } from './utils';
 import { NeliosResponseItem, NumberFilterField, TextFilterField } from './types';
 import { updatePriceRangeRectangles } from './utils/UI/priceRectangles';
-import { onSorting } from './utils/events/sort';
-import { onFilterFieldChange } from './utils/events/filter';
+import { onSorting } from './events/sort';
+import { onFilterFieldChange } from './events/filter';
 
 export let data: NeliosResponseItem[] = [];     // data from API
 export let results: NeliosResponseItem[] = [];  // filtered + sorted results

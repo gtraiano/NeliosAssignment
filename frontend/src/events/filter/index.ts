@@ -1,9 +1,9 @@
-import { filters, updateResultsUI } from "../..";
-import { TextFilterField, NumberFilterField } from "../../../types";
-import { updatePriceRangeRectangles } from "../../UI/priceRectangles";
+import { filters, updateResultsUI } from "../../utils";
+import { TextFilterField, NumberFilterField } from "../../types";
+import { updatePriceRangeRectangles } from "../../utils/UI/priceRectangles";
 import { onSorting } from "../sort";
 
-import { results, data } from "../../../main";
+import { results, data } from "../../main";
 
 // actions to perform after filtering
 export const generalChangeHandler = (e: Event) => {
@@ -14,6 +14,8 @@ export const generalChangeHandler = (e: Event) => {
     (document.querySelector<HTMLSpanElement>('.results-items-count') as HTMLSpanElement).textContent = String(results.length);
     updateResultsUI()(results);
     updatePriceRangeRectangles(results);
+    updatePriceRangeRadioOption(e);
+    updatePriceRangeMaxInputValue(e);
     onSorting(e)(results);
 }
 
@@ -48,4 +50,19 @@ export const onFilterFieldChange = (e: Event) => {
         (filters.fields[field] as TextFilterField).value = target.value;
     }
     generalChangeHandler(e);
+}
+
+// select radio with value as close to price slider value
+const updatePriceRangeRadioOption = (e: Event) => {
+    if(!((e.target as HTMLElement).id === 'price-range-slider')) return;
+    const radios = Array.from(document.querySelectorAll<HTMLInputElement>('.price-range-radio input'));
+    const value = Number.parseFloat((e.target as HTMLInputElement).value);
+    // radios are sorted by value, so 1st matching element is correct
+    (radios.find(r => Number.parseFloat(r.value) >= value) as HTMLInputElement).checked = true;
+}
+
+// update max price range input value on price slider change
+const updatePriceRangeMaxInputValue = (e: Event) => {
+    if(!((e.target as HTMLElement).id === 'price-range-slider')) return;
+    (document.querySelector('#price-range-max') as HTMLInputElement).value = (e.target as HTMLInputElement).value;
 }

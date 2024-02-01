@@ -38,14 +38,14 @@
       </section>
       <!-- title text  -->
       <!-- search -->
-      <section class="row search">
+      <section class="row search container-fluid justify-content-center">
         <!-- tabs  -->
         <div class="row cols-8 justify-content-center tabs">
-          <ul class="nav nav-pills nav-fill col-auto">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">εκδρομές</a>
+          <ul class="nav nav-justified nav-pills col-auto">
+            <li class="nav-item p-1">
+              <a class="nav-link active pt-2 pb-2" aria-current="page" href="#">εκδρομές</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item p-1">
               <a class="nav-link" href="#">ξενοδοχεία</a>
             </li>
           </ul>
@@ -53,7 +53,7 @@
         <!-- tabs -->
       <!-- search -->
         <div class="row justify-content-center">
-          <div class="fields d-flex flex-row col-auto">
+          <div class="fields d-flex flex-row col-auto col-xl-8 col-md-10 col-sm-12">
             <div class="col-4">
               <input type="text" id="destination" name="destination" class="form-control" placeholder="προορισμός">
             </div>
@@ -95,7 +95,7 @@
                 <div class="d-flex flex-column align-items-start col-5">
                   <label class="form-label" for="price-range-max">από</label>
                   <div class="input-group m-0 p-0 align-content-start">
-                    <span class="input-group-text border-end-0">&euro;</span>
+                    <span class="input-group-text border-end-0 bg-white">&euro;</span>
                     <input class="rounded-end border-start-0 form-control" type="number" id="price-range-min" name="price-range-min" data-filter-field="price.min"/>
                   </div>
                   
@@ -103,7 +103,7 @@
                 <div class="d-flex flex-column align-items-start col-5">
                   <label class="form-label" for="price-range-max">εώς</label>
                   <div class="input-group m-0 p-0 align-content-start">
-                    <span class="input-group-text border-end-0">&euro;</span>
+                    <span class="input-group-text border-end-0 bg-white">&euro;</span>
                     <input class="rounded-end border-start-0 form-control" type="number" id="price-range-max" name="price-range-max" data-filter-field="price.max"/>
                   </div>
                   

@@ -1,6 +1,6 @@
-import { NeliosResponseItem } from "../../../types";
-import { updateResultsUI } from "../../UI/cards";
-import { sortFunction } from "../../sort";
+import { NeliosResponseItem } from "../../types";
+import { updateResultsUI } from "../../utils/UI/cards";
+import { sortFunction } from "../../utils/sort";
 
 export const onSorting = (_e: Event) => (results: NeliosResponseItem[]) => {
     // sorting field and order

@@ -74,6 +74,23 @@ body {
   text-transform: capitalize;
 }
 
+.tabs > ul {
+  border-radius: 40px !important;
+  border: 1px solid gray;
+  background-color: #F5F5F5;
+}
+
+.tabs > ul > li > a {
+  color: #838393 !important;
+}
+
+.tabs > ul > li > a.active {
+  background-color: #ffffffcc !important;
+  color: #009649 !important;
+  border-radius: 40px !important;
+  box-shadow: 1px 1px 6px 2px lightgray;
+}
+
 #see-more-results {
   padding-bottom: 128px;
 }
