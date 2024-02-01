@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently --kill-others \"npm run --prefix ./APIFetch dev\" \"npm run --prefix ./frontend dev\"",
-    "build": "npm run --prefix ./APIFetch build & npm run --prefix ./frontend build"
+    "dev": "concurrently --kill-others \"npm run --prefix ./src/APIFetch dev\" \"npm run --prefix ./src/frontend dev\"",
+    "build": "npm run --prefix ./src/APIFetch build & npm run --prefix ./src/frontend build"
   },
   "devDependencies": {
     "typescript": "^5.2.2",

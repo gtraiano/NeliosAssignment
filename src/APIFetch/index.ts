@@ -2,7 +2,7 @@ import express, { Request, Response , Application } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-dotenv.config({ path: '../.env'});
+dotenv.config({ path: '../../.env'});
 
 const app: Application = express();
 const port = process.env.PORT || 8000;

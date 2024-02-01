@@ -44,9 +44,10 @@
   
   .price-range-rectangle {
     display: inline-flex;
-    justify-content: baseline;
-    align-items: center;
+    flex-direction: column-reverse;
     flex-grow: 1;
+    align-items: center;
+    justify-content: space-evenly;
     margin-right: 5px;
     background: #00B9F2;
     text-align: center;
@@ -67,17 +68,10 @@
   .price-range-rectangle:hover::before {
     content: attr(price) '€';
     font-size: 10px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
   }
   .price-range-rectangle:hover::after {
     content: '(' attr(count) ')';
     font-size: 10px;
-    position: absolute;
-    bottom: 2.5ex;
-    width: 100%;
-    text-align: center;
   }
   
   .form-check input ~ label {

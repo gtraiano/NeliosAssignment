@@ -13,10 +13,17 @@ export const generalChangeHandler = (e: Event) => {
     results.push(...filters.apply(data));
     (document.querySelector<HTMLSpanElement>('.results-items-count') as HTMLSpanElement).textContent = String(results.length);
     updateResultsUI()(results);
-    updatePriceRangeRectangles(results);
-    updatePriceRangeRadioOption(e);
-    updatePriceRangeMaxInputValue(e);
+    updateFiltersUI(e);
     onSorting(e)(results);
+}
+
+// update filter UI elements values
+const updateFiltersUI = (e: Event) => {
+    if(!((e.currentTarget as HTMLElement).id === 'filter-form')) return;
+    updatePriceRangeRectangles(results);
+    updatePriceRangeSliderValue();
+    updatePriceRangeRadioOption();
+    updatePriceRangeMaxInputValue();
 }
 
 // filter UI event handler for onchange events
@@ -53,16 +60,20 @@ export const onFilterFieldChange = (e: Event) => {
 }
 
 // select radio with value as close to price slider value
-const updatePriceRangeRadioOption = (e: Event) => {
-    if(!((e.target as HTMLElement).id === 'price-range-slider')) return;
+const updatePriceRangeRadioOption = () => {
     const radios = Array.from(document.querySelectorAll<HTMLInputElement>('.price-range-radio input'));
-    const value = Number.parseFloat((e.target as HTMLInputElement).value);
+    //const value = Number.parseFloat((e.target as HTMLInputElement).value);
+    const value = (filters.fields.price as NumberFilterField).max;
     // radios are sorted by value, so 1st matching element is correct
     (radios.find(r => Number.parseFloat(r.value) >= value) as HTMLInputElement).checked = true;
 }
 
 // update max price range input value on price slider change
-const updatePriceRangeMaxInputValue = (e: Event) => {
-    if(!((e.target as HTMLElement).id === 'price-range-slider')) return;
-    (document.querySelector('#price-range-max') as HTMLInputElement).value = (e.target as HTMLInputElement).value;
+const updatePriceRangeMaxInputValue = () => {
+    (document.querySelector('#price-range-max') as HTMLInputElement).value = (filters.fields.price as NumberFilterField).max.toString();
+}
+
+// update price range slider value
+const updatePriceRangeSliderValue = () => {
+    (document.querySelector('#price-range-slider') as HTMLInputElement).value = (filters.fields.price as NumberFilterField).max.toString();
 }
