@@ -14,7 +14,12 @@ Requests to the API require authentication. A minimal local backend perform all 
 
 ## Scripts
 
-`npm install` to install dependencies (run for root and project parts folder separately)
+To install dependencies, run `npm install` for all three project folders 
+  - 1.1 `npm install`
+  - 2.1 `cd src\APIFetch\`
+  - 2.2 `npm install`
+  - 3.1 `cd ..\frontend`
+  - 3.2 `npm install`
 
 `npm run dev` to start the development server
 
