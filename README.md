@@ -84,4 +84,6 @@ Update of the results grid is straightforward. When a new set of items must be r
 - [x] Filter by price and meal plan
 - [x] Sort by hotel name or price
 - [x] Desktop version (including breakpoints up to _sm_)
-- [x] Mobile version (excluding the filter/sort form apply button functionality - results are updated immediately on form change)
+- [x] Mobile version, excluding
+  - filter/sort form apply button functionality - results are updated immediately on form change
+  - search bar - it is merely hidden
