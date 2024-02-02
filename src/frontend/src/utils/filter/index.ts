@@ -63,21 +63,25 @@ const closestMultiple = (n: number, k: number = 10) => n + (k - n % k);
  * @param min min price value (will be rounded to closest multiple of 10)
  * @param max max price value
  * @param step price range between options
+ * @param idPrefix a prefix for the generated input labels ids
  * @returns 
  */
-export const generatePriceRangeRadio = (min: number, max: number, step: number = 50) => {
+export const generatePriceRangeRadio = ({ min, max, step, idPrefix }: {min: number, max: number, step: number, idPrefix?: string }) => {
+    const generateId = () => {
+        return `${idPrefix?.length ? `${idPrefix?.trim() + '-'}` : ''}price-range-radio-`;
+    }
     const generateRadio = (p: number, i: number) => {
         const div = document.createElement('div');
         div.classList.add('form-check', 'h-auto', 'mb-2');
         div.innerHTML = `
-            <input class="form-check-input" type="radio" name="price-range-radio" id="price-range-radio-${i}" value="${p}" data-filter-field="price.max">
-            <label class="form-check-label" for="price-range-radio-${i}">έως ${p} €</label>
+            <input class="form-check-input" type="radio" name="price-range-radio" id="${generateId()+i}" value="${p}" data-filter-field="price.max">
+            <label class="form-check-label" for="${generateId()+i}">έως ${p} €</label>
         `;
         return div;
     }
     
     let prices = [];
-    for(let i = closestMultiple(min, 10); i + step < max; i += step) {
+    for(let i = closestMultiple(min, 10); i + step < max; i += step ?? 50) {
         prices.push(i);
     }
 

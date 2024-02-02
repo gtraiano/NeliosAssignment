@@ -33,12 +33,13 @@ export const generatePriceRangeRectangles = ( data: NeliosResponseItem[]) => {
 }
 
 export const updatePriceRangeRectangles = (data: NeliosResponseItem[]) => {
-    const ui = document.querySelector<HTMLDivElement>('.price-range-rectangle-container') as HTMLDivElement;
-    if(ui.childElementCount) {
-        Array.from(ui.children).forEach(c => {
-            c.remove();
-        })
-    }
-    ui.replaceWith(generatePriceRangeRectangles(data));
+    const ui = document.querySelectorAll<HTMLDivElement>('.price-range-rectangle-container');
+    ui.forEach(el => {
+        if(el.childElementCount) {
+            Array.from(el.children).forEach(c => {
+                c.remove();
+            })
+        }
+        el.replaceWith(generatePriceRangeRectangles(data));
+    });
 }
-

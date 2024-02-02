@@ -156,8 +156,8 @@
         <div class="row mb-3 d-flex flex-row justify-content-between align-items-center">
           <span class="w-auto d-flex-inline flex-row p-0 text-16"><span class="results-items-count">0</span> διαθέσιμα πακέτα διακοπών</span>
           <!-- button toggles filter as a modal -->
-          <!--button data-bs-toggle="modal" data-bs-target="#filter-modal" class="btn w-auto btn-outline-success d-none" id="filter-show-button"-->
-          <button class="btn w-auto btn-outline-success d-none" id="filter-show-button">
+          <button data-bs-toggle="modal" data-bs-target="#filter-modal" class="btn w-auto btn-outline-success d-none" id="filter-show-button">
+          <!--button class="btn w-auto btn-outline-success d-none" id="filter-show-button"-->
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders2-vertical" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M0 10.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1H3V1.5a.5.5 0 0 0-1 0V10H.5a.5.5 0 0 0-.5.5M2.5 12a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5m3-6.5A.5.5 0 0 0 6 6h1.5v8.5a.5.5 0 0 0 1 0V6H10a.5.5 0 0 0 0-1H6a.5.5 0 0 0-.5.5M8 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2A.5.5 0 0 0 8 1m3 9.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1H14V1.5a.5.5 0 0 0-1 0V10h-1.5a.5.5 0 0 0-.5.5m2.5 1.5a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 1 0v-2a.5.5 0 0 0-.5-.5"/>
             </svg>&nbsp;
@@ -196,11 +196,85 @@
     </div>
   </section>
   <!-- promo-->
-  <!--div class="modal-dialog" tabindex="-1" id="filter-modal">
-    <div class="modal-dialog .modal-dialog-centered">
-      <div class="modal-body">
+  <!-- modal containing filter and sort form -->
+  <div class="modal" tabindex="-1" id="filter-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container rounded-4 p-4 px-xl-4 px-md-4 px-sm-2 filter-modal filter d-flex flex-column">
+            <form class="d-flex flex-column text-left ml-0" id="filter-form">
+              <h4 class="mb-4">φιλτρα</h4>
+              <!-- price range input -->
+              <fieldset class="price-range">
+                <legend>ευρος τιμης</legend>
+                <div class="d-flex flex-row justify-content-between">
+                  <div class="d-flex flex-column align-items-start col-5">
+                    <label class="form-label" for="price-range-max">από</label>
+                    <div class="input-group m-0 p-0 align-content-start">
+                      <span class="input-group-text border-end-0 bg-white">&euro;</span>
+                      <input class="rounded-end border-start-0 form-control" type="number" id="price-range-min" name="price-range-min" data-filter-field="price.min"/>
+                    </div>
+                    
+                  </div>
+                  <div class="d-flex flex-column align-items-start col-5">
+                    <label class="form-label" for="price-range-max">εώς</label>
+                    <div class="input-group m-0 p-0 align-content-start">
+                      <span class="input-group-text border-end-0 bg-white">&euro;</span>
+                      <input class="rounded-end border-start-0 form-control" type="number" id="price-range-max" name="price-range-max" data-filter-field="price.max"/>
+                    </div>
+                    
+                  </div>
+                </div>
+              </fieldset>
+              <!-- price range slider -->
+              <fieldset class="price-range-slider">
+                <div class="price-range-rectangle-container"></div>
+                <input dis type="range" class="form-range" min="0" max="0" step="1" id="price-range-slider" data-filter-field="price.max">
+              </fieldset>
+              <fieldset class="price-range-radio">
+                <!--legend>Price range</legend-->
+              </fieldset>
+              <hr>
+              <fieldset class="meal-plan-radio">
+                <legend>γευματα</legend>
+              </fieldset>
+            </form>
+            <hr>
+            <!-- sorting -->
+            <form class="d-flex flex-column text-left ml-0" id="sort-form">
+              <h4 class="mb-5">ταξινομηση</h4>
+              <fieldset>
+                <div class="d-flex flex-row align-items-end justify-content-between mb-3">
+                  <label class="form-label" for="order-by">κατηγορία</label>
+                  <select class="form-select w-50" id="order-by">
+                    <option selected value="none">καμία</option>
+                    <option value="name">όνομα</option>
+                    <option value="price">τιμή</option>
+                  </select>
+                </div>
+                <div class="d-flex flex-row align-items-end justify-content-between">
+                  <label class="form-label" for="sort-order">σειρά</label>
+                  <select class="form-select w-50" id="sort-order" disabled>
+                    <!--option selected value="none">καμία</option-->
+                    <option value="asc">αύξουσα</option>
+                    <option value="desc">φθίνουσα</option>
+                  </select>
+                </div>
+              </fieldset>
+              <!-- sorting -->
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <!-- button does not actually apply changes -->
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Εφαρμογή</button>
+        </div>
       </div>
     </div>
-  </div-->
+  </div>
+  
 </body>
 </html>

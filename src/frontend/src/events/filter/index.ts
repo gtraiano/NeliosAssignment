@@ -19,23 +19,25 @@ export const generalChangeHandler = (e: Event) => {
 
 // update filter UI elements values
 const updateFiltersUI = (e: Event) => {
-    if(!((e.currentTarget as HTMLElement).id === 'filter-form')) return;
+    //if(!((e.currentTarget as HTMLElement).id.includes('filter-form'))) return;
     updatePriceRangeRectangles(results);
-    updatePriceRangeSliderValue();
-    updatePriceRangeRadioOption();
-    updatePriceRangeMaxInputValue();
+    updatePriceRangeSliderValue(e.currentTarget as HTMLElement);
+    updatePriceRangeRadioOption(e.currentTarget as HTMLElement);
+    updatePriceRangeMaxInputValue(e.currentTarget as HTMLElement);
 }
 
 // filter UI event handler for onchange events
 export const onFilterFieldChange = (e: Event) => {
     const extractParts = (s: string): string[] => {
-        //const [, field, property] = /([^.]*)(?:\.(.*))?/gm.exec(s) as string[]; // [1] is field name, [2] is property
-        const [field, property] = s.split('.')
         const hyphenToCamelCase = (s: string) => {
+            // transform hyphen case to camel case
             if(!s) return s;
             const re = /(-)(\w)/g;
             return s.replaceAll(re, (...args: string[]) => args[2].toUpperCase());
         };
+        // string is of the form field-name.property-name (if property is missing, default to 'value')
+        //const [, field, property] = /([^.]*)(?:\.(.*))?/gm.exec(s) as string[]; // [1] is field name, [2] is property
+        const [field, property] = s.split('.')
         return [hyphenToCamelCase(field), hyphenToCamelCase(property)];
     };
 
@@ -59,21 +61,21 @@ export const onFilterFieldChange = (e: Event) => {
     generalChangeHandler(e);
 }
 
-// select radio with value as close to price slider value
-const updatePriceRangeRadioOption = () => {
-    const radios = Array.from(document.querySelectorAll<HTMLInputElement>('.price-range-radio input'));
+// select radio with value as close to price slider value in the given target element
+const updatePriceRangeRadioOption = (target: HTMLElement) => {
+    const radios = Array.from(target.querySelectorAll<HTMLInputElement>('.price-range-radio input'));
     //const value = Number.parseFloat((e.target as HTMLInputElement).value);
     const value = (filters.fields.price as NumberFilterField).max;
     // radios are sorted by value, so 1st matching element is correct
     (radios.find(r => Number.parseFloat(r.value) >= value) as HTMLInputElement).checked = true;
 }
 
-// update max price range input value on price slider change
-const updatePriceRangeMaxInputValue = () => {
-    (document.querySelector('#price-range-max') as HTMLInputElement).value = (filters.fields.price as NumberFilterField).max.toString();
+// update max price range input value on price slider change in the given target element
+const updatePriceRangeMaxInputValue = (target: HTMLElement) => {
+    (target.querySelector('#price-range-max') as HTMLInputElement).value = (filters.fields.price as NumberFilterField).max.toString();
 }
 
-// update price range slider value
-const updatePriceRangeSliderValue = () => {
-    (document.querySelector('#price-range-slider') as HTMLInputElement).value = (filters.fields.price as NumberFilterField).max.toString();
+// update price range slider value in the given target element
+const updatePriceRangeSliderValue = (target: HTMLElement) => {
+    (target.querySelector('#price-range-slider') as HTMLInputElement).value = (filters.fields.price as NumberFilterField).max.toString();
 }
