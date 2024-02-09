@@ -1,0 +1,2 @@
+export const importTemplate = async (path: string) => stringTemplateToFragment(await (await fetch(path)).text());
+export const stringTemplateToFragment = (template: string) => new Range().createContextualFragment(template);

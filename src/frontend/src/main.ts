@@ -6,6 +6,7 @@ import { NeliosResponseItem, NumberFilterField, TextFilterField } from './types'
 import { updatePriceRangeRectangles } from './utils/UI/priceRectangles';
 import { onSorting } from './events/sort';
 import { onFilterFieldChange } from './events/filter';
+import { importTemplate } from './utils/DOM';
 
 export let data: NeliosResponseItem[] = [];     // data from API
 export let results: NeliosResponseItem[] = [];  // filtered + sorted results
@@ -28,6 +29,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         target?.append(generateHotelCard(item));
     });
 
+    const formTemplate = await importTemplate('/src/templates/form.html');
+    (document.querySelector('section#control-panel') as HTMLElement).append(formTemplate.cloneNode(true));
+    (document.querySelector('#filter-modal .modal-body') as HTMLElement).append(formTemplate.cloneNode(true));
+    (document.querySelector('#filter-modal .modal-body .filter') as HTMLElement).classList.add('d-flex', 'flex-column');
     // form event listeners
     document.querySelectorAll('form#filter-form').forEach(f => {
         f.addEventListener('change', onFilterFieldChange);

@@ -83,72 +83,8 @@
     </div>
     <!-- results -->
     <section class="container-fluid col-12 col-xxl-10 col-xl-10 col-md-11 col-sm-12 d-flex flex-row results mb-4">
-      <section class=" col-2 col-xl-2 col-lg-3 col-md-4 col-sm-4 d-flex flex-column">
-        <!-- filter -->
-        <div class="container rounded-4 p-4 px-xl-4 px-md-4 px-sm-2 filter">
-          <form class="d-flex flex-column text-left ml-0" id="filter-form">
-            <h4 class="mb-4">φιλτρα</h4>
-            <!-- price range input -->
-            <fieldset class="price-range">
-              <legend>ευρος τιμης</legend>
-              <div class="d-flex flex-row justify-content-between">
-                <div class="d-flex flex-column align-items-start col-5">
-                  <label class="form-label" for="price-range-max">από</label>
-                  <div class="input-group m-0 p-0 align-content-start">
-                    <span class="input-group-text border-end-0 bg-white">&euro;</span>
-                    <input class="rounded-end border-start-0 form-control" type="number" id="price-range-min" name="price-range-min" data-filter-field="price.min"/>
-                  </div>
-                  
-                </div>
-                <div class="d-flex flex-column align-items-start col-5">
-                  <label class="form-label" for="price-range-max">εώς</label>
-                  <div class="input-group m-0 p-0 align-content-start">
-                    <span class="input-group-text border-end-0 bg-white">&euro;</span>
-                    <input class="rounded-end border-start-0 form-control" type="number" id="price-range-max" name="price-range-max" data-filter-field="price.max"/>
-                  </div>
-                  
-                </div>
-              </div>
-            </fieldset>
-            <!-- price range slider -->
-            <fieldset class="price-range-slider">
-              <div class="price-range-rectangle-container"></div>
-              <input dis type="range" class="form-range" min="0" max="0" step="1" id="price-range-slider" data-filter-field="price.max">
-            </fieldset>
-            <fieldset class="price-range-radio">
-              <!--legend>Price range</legend-->
-            </fieldset>
-            <hr>
-            <fieldset class="meal-plan-radio">
-              <legend>γευματα</legend>
-            </fieldset>
-          </form>
-          <hr>
-          <!-- sorting -->
-          <form class="d-flex flex-column text-left ml-0" id="sort-form">
-            <h4 class="mb-5">ταξινομηση</h4>
-            <fieldset>
-              <div class="d-flex flex-row align-items-end justify-content-between mb-3">
-                <label class="form-label" for="order-by">κατηγορία</label>
-                <select class="form-select w-50" id="order-by">
-                  <option selected value="none">καμία</option>
-                  <option value="name">όνομα</option>
-                  <option value="price">τιμή</option>
-                </select>
-              </div>
-              <div class="d-flex flex-row align-items-end justify-content-between">
-                <label class="form-label" for="sort-order">σειρά</label>
-                <select class="form-select w-50" id="sort-order" disabled>
-                  <!--option selected value="none">καμία</option-->
-                  <option value="asc">αύξουσα</option>
-                  <option value="desc">φθίνουσα</option>
-                </select>
-              </div>
-            </fieldset>
-            <!-- sorting -->
-          </form>
-        </div>
-    </section>
+      <section class="col-2 col-xl-2 col-lg-3 col-md-4 col-sm-4 d-flex flex-column" id="control-panel">
+      </section>
     <section class="col-10 col-xxl-10 col-xl-10 col-md-8 col-sm-8 container-fluid">
       <!-- result cards-->
       <div class="container p-2 result-items">
@@ -204,69 +140,6 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="container rounded-4 p-4 px-xl-4 px-md-4 px-sm-2 filter-modal filter d-flex flex-column">
-            <form class="d-flex flex-column text-left ml-0" id="filter-form">
-              <h4 class="mb-4">φιλτρα</h4>
-              <!-- price range input -->
-              <fieldset class="price-range">
-                <legend>ευρος τιμης</legend>
-                <div class="d-flex flex-row justify-content-between">
-                  <div class="d-flex flex-column align-items-start col-5">
-                    <label class="form-label" for="price-range-max">από</label>
-                    <div class="input-group m-0 p-0 align-content-start">
-                      <span class="input-group-text border-end-0 bg-white">&euro;</span>
-                      <input class="rounded-end border-start-0 form-control" type="number" id="price-range-min" name="price-range-min" data-filter-field="price.min"/>
-                    </div>
-                    
-                  </div>
-                  <div class="d-flex flex-column align-items-start col-5">
-                    <label class="form-label" for="price-range-max">εώς</label>
-                    <div class="input-group m-0 p-0 align-content-start">
-                      <span class="input-group-text border-end-0 bg-white">&euro;</span>
-                      <input class="rounded-end border-start-0 form-control" type="number" id="price-range-max" name="price-range-max" data-filter-field="price.max"/>
-                    </div>
-                    
-                  </div>
-                </div>
-              </fieldset>
-              <!-- price range slider -->
-              <fieldset class="price-range-slider">
-                <div class="price-range-rectangle-container"></div>
-                <input dis type="range" class="form-range" min="0" max="0" step="1" id="price-range-slider" data-filter-field="price.max">
-              </fieldset>
-              <fieldset class="price-range-radio">
-                <!--legend>Price range</legend-->
-              </fieldset>
-              <hr>
-              <fieldset class="meal-plan-radio">
-                <legend>γευματα</legend>
-              </fieldset>
-            </form>
-            <hr>
-            <!-- sorting -->
-            <form class="d-flex flex-column text-left ml-0" id="sort-form">
-              <h4 class="mb-5">ταξινομηση</h4>
-              <fieldset>
-                <div class="d-flex flex-row align-items-end justify-content-between mb-3">
-                  <label class="form-label" for="order-by">κατηγορία</label>
-                  <select class="form-select w-50" id="order-by">
-                    <option selected value="none">καμία</option>
-                    <option value="name">όνομα</option>
-                    <option value="price">τιμή</option>
-                  </select>
-                </div>
-                <div class="d-flex flex-row align-items-end justify-content-between">
-                  <label class="form-label" for="sort-order">σειρά</label>
-                  <select class="form-select w-50" id="sort-order" disabled>
-                    <!--option selected value="none">καμία</option-->
-                    <option value="asc">αύξουσα</option>
-                    <option value="desc">φθίνουσα</option>
-                  </select>
-                </div>
-              </fieldset>
-              <!-- sorting -->
-            </form>
-          </div>
         </div>
         <div class="modal-footer justify-content-center">
           <!-- button does not actually apply changes -->
