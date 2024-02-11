@@ -2,13 +2,14 @@ import { NeliosResponseItem } from "../../types";
 import { updateResultsUI } from "../../utils/UI/cards";
 import { sortFunction } from "../../utils/sort";
 
-export const onSorting = (_e: Event) => (results: NeliosResponseItem[]) => {
+export const onSorting = (e: Event) => (results: NeliosResponseItem[]) => {
+    const target = e.currentTarget as HTMLFormElement;
     // sorting field and order
-    const order = (document.querySelector('#sort-order') as HTMLSelectElement).value;
-    const by = (document.querySelector('#order-by') as HTMLSelectElement).value;
+    const order = (target.querySelector('#sort-order') as HTMLSelectElement).value;
+    const by = (target.querySelector('#order-by') as HTMLSelectElement).value;
     // disable order is field is set to none
-    if(by === 'none') (document.querySelector('#sort-order') as HTMLSelectElement).setAttribute('disabled', '');
-    else ((document).querySelector('#sort-order') as HTMLSelectElement).removeAttribute('disabled');
+    if(by === 'none') document.querySelectorAll('#sort-order').forEach(s => { s.setAttribute('disabled', ''); });
+    else document.querySelectorAll('#sort-order').forEach(s => { s.removeAttribute('disabled') });
     // no need to sort
     if(by === 'none') {
         updateResultsUI()(results);
