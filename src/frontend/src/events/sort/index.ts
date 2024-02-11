@@ -7,9 +7,7 @@ export const onSorting = (e: Event) => (results: NeliosResponseItem[]) => {
     // sorting field and order
     const order = (target.querySelector('#sort-order') as HTMLSelectElement).value;
     const by = (target.querySelector('#order-by') as HTMLSelectElement).value;
-    // disable order is field is set to none
-    if(by === 'none') document.querySelectorAll('#sort-order').forEach(s => { s.setAttribute('disabled', ''); });
-    else document.querySelectorAll('#sort-order').forEach(s => { s.removeAttribute('disabled') });
+    syncForms(by, order);
     // no need to sort
     if(by === 'none') {
         updateResultsUI()(results);
@@ -17,4 +15,27 @@ export const onSorting = (e: Event) => (results: NeliosResponseItem[]) => {
     }
     const sorted = [...results].sort((a, b) => sortFunction(a, b)({ by, order }));
     updateResultsUI()(sorted);
+}
+
+const syncForms = (by: string, order: string) => {
+    // targeted select elements
+    const sortBys = document.querySelectorAll<HTMLSelectElement>('#order-by');
+    const sortOrders = document.querySelectorAll<HTMLSelectElement>('#sort-order');
+
+    // disable order if field is set to none
+    if(by === 'none') {
+        document.querySelectorAll('#sort-order').forEach(s => { s.setAttribute('disabled', ''); });
+    }
+    else {
+        document.querySelectorAll('#sort-order').forEach(s => { s.removeAttribute('disabled') });
+    }
+
+    // sync values for respective select's
+    sortBys.forEach(s => {
+        s.value = by;
+    });
+
+    sortOrders.forEach(s => {
+        s.value = order;
+    });
 }
